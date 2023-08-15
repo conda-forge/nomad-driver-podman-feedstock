@@ -1,5 +1,5 @@
 {% set name = "nomad-driver-podman" %}
-{% set version = "0.5.0" %}
+{% set version = "0.5.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   - url: https://github.com/hashicorp/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: 8921e0b692e75fcc435629c954daa2a3e05a85f7f7583615c80b5001a869568c
+    sha256: 3465663dbe04f522886fca108e9cab3e1018c846d6a9f6946cb64537dd28dfbf
     folder: src
   - url: https://raw.githubusercontent.com/hashicorp/cronexpr/a5b9ff11e6c27ab08e1dfd6ad1fe99179f441d0a/APLv2
     sha256: cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
     fn: LICENSE-cronexpr
 
 build:
-  number: 1
+  number: 0
   script:
     - cd src
     - go-licenses save . --save_path ../library_licenses --ignore github.com/hashicorp/cronexpr
