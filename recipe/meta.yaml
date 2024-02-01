@@ -40,7 +40,8 @@ about:
     - src/LICENSE
     - LICENSE-cronexpr
     - library_licenses/
-  summary: HCL reformatter
+  summary: Podman driver for Nomad
+  description: A nomad task driver plugin for sandboxing workloads in podman containers
 
 extra:
   recipe-maintainers:
