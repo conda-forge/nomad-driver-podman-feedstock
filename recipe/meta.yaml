@@ -1,5 +1,5 @@
 {% set name = "nomad-driver-podman" %}
-{% set version = "0.5.2" %}
+{% set version = "0.6.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,17 +7,20 @@ package:
 
 source:
   - url: https://github.com/hashicorp/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: e7e8691198e1ddaedc348545a7abf3325d7e4e805967eacb30111685aec8c5af
+    sha256: 883312bf9db56f2bbc5601cf69f454ab2557a5f487b312fce86881ea739cf0cc
     folder: src
   - url: https://raw.githubusercontent.com/hashicorp/cronexpr/a5b9ff11e6c27ab08e1dfd6ad1fe99179f441d0a/APLv2
     sha256: cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
     fn: LICENSE-cronexpr
+  - url: https://raw.githubusercontent.com/hashicorp/nomad/c5b36b500b498a776c0b3835152f7dec63a0bbee/LICENSE
+    sha256: f82781a0c0ba7d7ec032ca999ac44b902d0f944363287b09b1ebff242e716f6b
+    fn: LICENSE-nomad
 
 build:
   number: 0
   script:
     - cd src
-    - go-licenses save . --save_path ../library_licenses --ignore github.com/hashicorp/cronexpr
+    - go-licenses save . --save_path ../library_licenses --ignore github.com/hashicorp/cronexpr --ignore github.com/hashicorp/nomad
     - go build -v -o $PREFIX/bin/nomad-driver-podman  # [not win]
     - go build -v -o %LIBRARY_BIN%\nomad-driver-podman.exe  # [win]
     # Clear out cache to avoid file not removable warnings
@@ -39,6 +42,7 @@ about:
   license_file:
     - src/LICENSE
     - LICENSE-cronexpr
+    - LICENSE-nomad
     - library_licenses/
   summary: Podman driver for Nomad
   description: A nomad task driver plugin for sandboxing workloads in podman containers
