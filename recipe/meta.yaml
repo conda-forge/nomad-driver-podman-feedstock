@@ -1,5 +1,5 @@
 {% set name = "nomad-driver-podman" %}
-{% set version = "0.6.1" %}
+{% set version = "0.6.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/hashicorp/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: 51b6b96470766f819dd4093a056c23029af5038a296b0e88334770e335b6c53d
+    sha256: eff9ff38a49efc21adeb703c410220f32bbbf3dd6eb0a3230d7e391a67eaf4e7
     folder: src
   - url: https://raw.githubusercontent.com/hashicorp/cronexpr/a5b9ff11e6c27ab08e1dfd6ad1fe99179f441d0a/APLv2
     sha256: cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
